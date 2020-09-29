@@ -1,4 +1,4 @@
-public class DictionaryCommandLine extends DictionaryCommandline {
+public class DictionaryCommandLine extends DictionaryCommandlinee {
 
     public void dictionaryBasic() {
         insertFromCommandline();

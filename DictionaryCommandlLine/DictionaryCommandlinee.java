@@ -1,4 +1,4 @@
-public class DictionaryCommandline extends DictionaryManagement {
+public class DictionaryCommandlinee extends DictionaryManagement {
 
     public void showAllWords() {
         int numberOfWord = dictionary.getSize();
