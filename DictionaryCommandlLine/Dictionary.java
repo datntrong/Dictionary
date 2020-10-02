@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dictionary {
-    private List<Word> dictionary = new ArrayList<>();
+    public List<Word> dictionary = new ArrayList<Word>();
     public void addWord(Word word){
         this.dictionary.add(word);
     }

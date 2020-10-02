@@ -1,5 +1,6 @@
 public class DictionaryCommandlinee extends DictionaryManagement {
 
+
     public void showAllWords() {
         int numberOfWord = dictionary.getSize();
         System.out.printf("%-6s| %-18s| %s\n", "No", "English", "Vietnamese");
