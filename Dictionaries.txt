@@ -1,0 +1,11 @@
+8
+Hello	Xin chao
+Goodbye	Tam biet
+Name	Ten
+age	Tuoi
+eat	an
+rice	gas
+Love	Tinh yeu
+Help	Giup do
+
+

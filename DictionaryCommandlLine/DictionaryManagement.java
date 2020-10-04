@@ -9,8 +9,9 @@ public class DictionaryManagement {
 
         int numberOfWord = Integer.parseInt(scanner.nextLine());
         for (int i = 1; i <= numberOfWord; i++) {
-            String English    = scanner.nextLine();
-            String Vietnamese = scanner.nextLine();
+            String line = scanner.nextLine();
+            String English    = line.split("\t")[0];
+            String Vietnamese = line.split("\t")[1];
             Word newWord = new Word(English, Vietnamese);
             dictionary.addWord(newWord);
         }
@@ -74,5 +75,19 @@ public class DictionaryManagement {
             e.printStackTrace();
         }
 
+    }
+
+    public void dictionaryLookup(){
+        System.out.println("Tra cu tu dien bang dong lenh :");
+        Scanner sc = new Scanner(System.in);
+        String word = sc.nextLine();
+        if(dictionary.getWord(word)!=null){
+            String English    = dictionary.getWord(word).getWord_target();
+            String Vietnamese = dictionary.getWord(word).getWord_explain();
+            System.out.printf("%-18s| %s\n", English, Vietnamese);
+        }
+        else {
+            System.out.println("Word not found");
+        }
     }
 }
