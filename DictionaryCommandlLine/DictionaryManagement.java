@@ -90,4 +90,37 @@ public class DictionaryManagement {
             System.out.println("Word not found");
         }
     }
+
+
+    public void dictionarySearcher () {
+        System.out.println("Tim kiem tu bang dong lenh");
+        Scanner scanner = new Scanner(System.in);
+        String t = scanner.nextLine();
+        int sz = this.dictionary.getSize();
+        System.out.printf("%-6s| %-18s| %s\n", "No", "English", "Vietnamese");
+
+        for (int i = 0, no = 0; i < sz; ++i) {
+            Word word = this.dictionary.getWord(i);
+            if (word.getWord_target().toUpperCase().startsWith(t.toUpperCase()))
+                System.out.printf("%-6s| %-18s| %s\n", String.valueOf(++no), word.getWord_target(), word.getWord_explain());
+        }
+    }
+
+    public void dictionaryExportToFile(String url){
+        try {
+            PrintWriter printWriter = new PrintWriter(new File(url));
+            int size = this.dictionary.getSize();
+            printWriter.println(size);
+            for (int i = 0; i < size; i++) {
+                Word w = this.dictionary.getWord(i);
+                printWriter.printf("%s\t%s\n", w.getWord_target(), w.getWord_explain());
+            }
+            printWriter.flush();
+            System.out.printf("Xuat file %s thanh cong\n",url);
+        }
+        catch (IOException e) {
+            System.err.println("\nLoi: Khong ghi duoc file");
+        }
+
+    }
 }
