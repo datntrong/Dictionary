@@ -19,7 +19,7 @@ public class DictionaryManagement {
     public void insertFromFile(){
         Scanner sc = null;
         try {
-            sc = new Scanner(new File("dictionaries.txt"));
+            sc = new Scanner(new File("Dictionaries.txt"));
             int wordCount = sc.nextInt();
             sc.nextLine();
             for(int i=0;i<wordCount;i++){
@@ -29,7 +29,7 @@ public class DictionaryManagement {
                 this.dictionary.addWord(new Word(word_target,word_explain));
             }
         } catch (FileNotFoundException e){
-            System.out.println("file dictionaries.txt not found\n");
+            System.out.println("file Dictionaries.txt not found\n");
         }
     }
 
@@ -78,7 +78,7 @@ public class DictionaryManagement {
     }
 
     public void dictionaryLookup(){
-        System.out.println("Tra cu tu dien bang dong lenh :");
+        System.out.println("Tra cu tu dien bang dong lenh: ");
         Scanner sc = new Scanner(System.in);
         String word = sc.nextLine();
         if(dictionary.getWord(word)!=null){
