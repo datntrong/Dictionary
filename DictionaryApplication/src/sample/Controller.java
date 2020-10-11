@@ -29,7 +29,7 @@ public class Controller implements Initializable {
     private ListView<String> listView;
 
     @FXML
-    private WebView webViewWord;
+    private WebView webViewWord = new WebView();
 
     private GetDataWord getDataWord = new GetDataWord();
 
@@ -43,14 +43,14 @@ public class Controller implements Initializable {
     }
 
     public void initComponents(Scene scene) {
-        //this.definitionView = (WebView) scene.lookup("#definitionView");
+        this.webViewWord = (WebView) scene.lookup("#webViewWord");
         this.listView = (ListView<String>) scene.lookup("#listView");
-        Controller context = this;
         this.listView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                    Word selectedWord = new Word("HEllo", "xin chao");
-                    String definition = selectedWord.getWord_target();
-                    //context.definitionView.getEngine().loadContent(definition, "text/html");
+                    Word selectedWord = getDataWord.getData().get(newValue.trim());
+                    String definition = selectedWord.getWord_explain();
+                   // String definition="1111";
+                    this.webViewWord.getEngine().loadContent(definition, "text/html");
                 }
         );
     }
@@ -59,4 +59,7 @@ public class Controller implements Initializable {
         this.listView.getItems().addAll(getDataWord.getData().keySet());
 
     }
+
+
+
 }
