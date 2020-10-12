@@ -1,19 +1,10 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-
-import java.awt.*;
-import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main extends Application {
     private Controller controller = new Controller();
@@ -31,13 +22,11 @@ public class Main extends Application {
 
         controller.initComponents(scene);
         controller.loadlistvew();
-
+//        controller.dictionarySearcher();
     }
-
 
     public static void main(String[] args) {
         launch(args);
     }
-
 
 }

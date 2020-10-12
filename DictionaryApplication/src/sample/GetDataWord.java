@@ -1,13 +1,12 @@
 package sample;
 
-import javafx.scene.control.ListView;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class GetDataWord {
 
@@ -16,13 +15,13 @@ public class GetDataWord {
     private static final String DATA_FILE_PATH = "E_V.txt";
     private static final String SPLITTING_CHARACTERS = "<html>";
 
-    private ListView<String> listView;
+    private TreeMap<String, Word> datasort = new TreeMap<String, Word>(data);
 
-    GetDataWord(){
-        readData();
+    GetDataWord() {
     }
+
     public void readData() {
-        try{
+        try {
             FileReader fis = new FileReader(DATA_FILE_PATH);
             BufferedReader br = new BufferedReader(fis);
             String line;
@@ -33,6 +32,9 @@ public class GetDataWord {
                 Word wordObj = new Word(word, definition);
                 data.put(word, wordObj);
             }
+            datasort.putAll(data);
+            datasort.entrySet();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -41,13 +43,8 @@ public class GetDataWord {
 
     }
 
-
-    public ListView<String> getListView() {
-        return listView;
-
-    }
-
     public Map<String, Word> getData() {
-        return data;
+        readData();
+        return datasort;
     }
 }
