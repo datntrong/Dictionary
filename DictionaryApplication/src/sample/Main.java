@@ -22,11 +22,16 @@ public class Main extends Application {
 
         controller.initComponents(scene);
         controller.loadlistvew();
-//        controller.dictionarySearcher();
+        //controller.dictionarySearcher();
+        //controller.getWordSearch();
+        controller.initComponents(scene);
+
     }
+
 
     public static void main(String[] args) {
         launch(args);
     }
+
 
 }
