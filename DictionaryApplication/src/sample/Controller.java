@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.web.WebView;
@@ -17,10 +18,13 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     @FXML
-    private TextField inputWord ;
+    private TextField inputWord;
 
     @FXML
     private ListView<String> listView;
+
+    @FXML
+    private Button btn = new Button();
 
     @FXML
     private WebView webViewWord = new WebView();
@@ -29,7 +33,7 @@ public class Controller implements Initializable {
 
     private String word;
 
-    public Controller(){
+    public Controller() {
 
     }
 
@@ -50,7 +54,7 @@ public class Controller implements Initializable {
         );
     }
 
-    public void loadlistvew(){
+    public void loadListView() {
         this.listView.getItems().addAll(dictionaryManagement.getData().keySet());
     }
 
@@ -58,30 +62,34 @@ public class Controller implements Initializable {
         this.inputWord = inputWord;
     }
 
-    public String inputW(){
+    public String inputW() {
         return inputWord.getText();
     }
 
-    public void dictionarySearcher () {
+    public void dictionarySearcher() {
         String t = word;
         //String a = inputWord.getText();
 
         //System.out.println(a);
-        if(word==null);
-        else{
+        if (word == null) ;
+        else {
             this.listView.getItems().removeAll(dictionaryManagement.getData().keySet());
-            List<String> listwordsearch = dictionaryManagement.dictionarySearcher(t);
+            List<String> listWordSearch = dictionaryManagement.dictionarySearcher(t);
 
-            this.listView.getItems().addAll(listwordsearch);
+            this.listView.getItems().addAll(listWordSearch);
             this.listView.refresh();
         }
 
     }
 
-    public void getWordSearch(ActionEvent actionEvent){
-        this.word=this.inputWord.getText();
+    public void getWordSearch(ActionEvent actionEvent) {
+        this.word = this.inputWord.getText();
         System.out.println(word);
         dictionarySearcher();
+    }
 
+    public void textToSpeech(ActionEvent e) {
+        String text = listView.getSelectionModel().getSelectedItem();
+        TextToSpeech.speak(text, false);
     }
 }

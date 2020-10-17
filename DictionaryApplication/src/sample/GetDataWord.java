@@ -15,12 +15,13 @@ public class GetDataWord {
     private static final String DATA_FILE_PATH = "E_V.txt";
     private static final String SPLITTING_CHARACTERS = "<html>";
 
-    private TreeMap<String ,Word> datasort = new TreeMap<String,Word>(data);
+    private TreeMap<String, Word> dataSort = new TreeMap<String, Word>(data);
 
-    GetDataWord(){
+    GetDataWord() {
     }
+
     public void readData() {
-        try{
+        try {
             FileReader fis = new FileReader(DATA_FILE_PATH);
             BufferedReader br = new BufferedReader(fis);
             String line;
@@ -31,8 +32,8 @@ public class GetDataWord {
                 Word wordObj = new Word(word, definition);
                 data.put(word, wordObj);
             }
-            datasort.putAll(data);
-            datasort.entrySet();
+            dataSort.putAll(data);
+            dataSort.entrySet();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -41,8 +42,9 @@ public class GetDataWord {
         }
 
     }
+
     public Map<String, Word> getData() {
         readData();
-        return datasort;
+        return dataSort;
     }
 }
