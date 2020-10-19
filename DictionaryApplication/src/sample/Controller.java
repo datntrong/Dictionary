@@ -3,13 +3,18 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -28,6 +33,21 @@ public class Controller implements Initializable {
 
     @FXML
     private WebView webViewWord = new WebView();
+
+    @FXML
+    private Button add = new Button();
+
+    @FXML
+    Button translateWindow = new Button();
+
+    @FXML
+    Button translate = new Button();
+
+    @FXML
+    TextArea target = new TextArea();
+
+    @FXML
+    TextArea explain = new TextArea();
 
     private DictionaryManagement dictionaryManagement = new DictionaryManagement();
 
@@ -91,5 +111,27 @@ public class Controller implements Initializable {
     public void textToSpeech(ActionEvent e) {
         String text = listView.getSelectionModel().getSelectedItem();
         TextToSpeech.speak(text, false);
+    }
+
+    public void translateWindow(ActionEvent event) throws IOException {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("GoogleTranslate.fxml"));
+
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Translate");
+
+            Scene scene = new Scene(root, 600, 450);
+            primaryStage.setScene(scene);
+
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void translate(ActionEvent event) throws IOException {
+        explain.clear();
+        String Vietnamese = Translate.translate("en", "vi",target.getText());
+        explain.appendText(Vietnamese);
     }
 }

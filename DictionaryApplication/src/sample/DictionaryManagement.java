@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 public class DictionaryManagement {
-    private GetDataWord getdata = new GetDataWord();
+    private GetDataWord getData = new GetDataWord();
 
-    private Map<String, Word> data = getdata.getData();
+    private Map<String, Word> data = getData.getData();
 
     private List<String> dictionary = new ArrayList<String>();
 
