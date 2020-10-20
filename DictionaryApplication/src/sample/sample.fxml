@@ -22,7 +22,6 @@
             <Button fx:id="btn" mnemonicParsing="false" onAction="#textToSpeech" prefHeight="26.0" prefWidth="103.0" text="Speech" />
          </children>
       </HBox>
-      <Button fx:id="add" layoutX="502.0" layoutY="46.0" mnemonicParsing="false" onAction="#addWord" text="Add" />
       <Button fx:id="translateWindow" layoutX="631.0" layoutY="46.0" mnemonicParsing="false" onAction="#translateWindow" text="Translate" />
    </children>
 </AnchorPane>
