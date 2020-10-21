@@ -5,27 +5,27 @@ import java.util.List;
 import java.util.Map;
 
 public class DictionaryManagement {
-    private GetDataWord getdata = new GetDataWord();
+    private GetDataWord getData = new GetDataWord();
 
-    private Map<String,Word> data = getdata.getData();
+    private Map<String, Word> data = getData.getData();
 
     private List<String> dictionary = new ArrayList<String>();
 
-    public void setData(){
+    public void setData() {
         dictionary.addAll(data.keySet());
     }
 
-    public List<String> dictionarySearcher (String t) {
-        List<String> listwordsearch = new ArrayList<String>();
+    public List<String> dictionarySearcher(String t) {
+        List<String> listWordSearch = new ArrayList<String>();
         setData();
         int sz = this.dictionary.size();
         for (int i = 0, no = 0; i < sz; ++i) {
             String word = dictionary.get(i);
             if (word.toUpperCase().startsWith(t.toUpperCase()))
-                listwordsearch.add(word);
+                listWordSearch.add(word);
         }
 
-        return listwordsearch;
+        return listWordSearch;
     }
 
     public Map<String, Word> getData() {

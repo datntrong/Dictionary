@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
     private Controller controller = new Controller();
 
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -21,13 +20,16 @@ public class Main extends Application {
         primaryStage.show();
 
         controller.initComponents(scene);
-        controller.loadlistvew();
+        controller.loadListView();
         //controller.dictionarySearcher();
         //controller.getWordSearch();
         controller.initComponents(scene);
-
     }
 
+    @Override
+    public void stop() throws Exception {
+        TextToSpeech.speak("", true);
+    }
 
     public static void main(String[] args) {
         launch(args);
