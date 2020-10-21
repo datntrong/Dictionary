@@ -23,5 +23,6 @@
          </children>
       </HBox>
       <Button fx:id="translateWindow" layoutX="631.0" layoutY="46.0" mnemonicParsing="false" onAction="#translateWindow" text="Translate" />
+      <Button fx:id="add" layoutX="720.0" layoutY="46.0" mnemonicParsing="false" onAction="#showAddWord" text="AddWord" />
    </children>
 </AnchorPane>

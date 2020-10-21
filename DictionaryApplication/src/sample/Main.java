@@ -6,8 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Main extends Application {
     private Controller controller = new Controller();
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -21,9 +24,8 @@ public class Main extends Application {
 
         controller.initComponents(scene);
         controller.loadListView();
-        //controller.dictionarySearcher();
-        //controller.getWordSearch();
         controller.initComponents(scene);
+
     }
 
     @Override

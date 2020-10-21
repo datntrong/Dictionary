@@ -9,16 +9,11 @@ public class DictionaryManagement {
 
     private Map<String, Word> data = getData.getData();
 
-    private List<String> dictionary = new ArrayList<String>();
-
-    public void setData() {
-        dictionary.addAll(data.keySet());
-    }
-
     public List<String> dictionarySearcher(String t) {
+        List<String> dictionary = new ArrayList<String>();
         List<String> listWordSearch = new ArrayList<String>();
-        setData();
-        int sz = this.dictionary.size();
+        dictionary.addAll(data.keySet());
+        int sz = dictionary.size();
         for (int i = 0, no = 0; i < sz; ++i) {
             String word = dictionary.get(i);
             if (word.toUpperCase().startsWith(t.toUpperCase()))
@@ -28,6 +23,9 @@ public class DictionaryManagement {
         return listWordSearch;
     }
 
+    public void addWord(String word_target, String word_explain){
+        data.put(word_target,new Word(word_target,word_explain));
+    }
     public Map<String, Word> getData() {
         return data;
     }

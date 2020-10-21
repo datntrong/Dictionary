@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -48,6 +47,11 @@ public class Controller implements Initializable {
 
     @FXML
     TextArea explain = new TextArea();
+
+    @FXML
+    TextField addWord_t;
+    @FXML
+    TextField addWord_e;
 
     private DictionaryManagement dictionaryManagement = new DictionaryManagement();
 
@@ -131,7 +135,25 @@ public class Controller implements Initializable {
 
     public void translate(ActionEvent event) throws IOException {
         explain.clear();
-        String Vietnamese = Translate.translate("en", "vi",target.getText());
+        String Vietnamese = Translate.translate("en", "vi", target.getText());
         explain.appendText(Vietnamese);
+    }
+    public void addWord(ActionEvent e){
+        dictionaryManagement.addWord(addWord_t.getText(),addWord_e.getText());
+        System.out.println(addWord_t.getText());
+        
+
+    }
+
+    public void showAddWord(ActionEvent e) throws IOException{
+            Parent root = FXMLLoader.load(getClass().getResource("WordEdit.fxml"));
+
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Edit Word");
+
+            Scene scene = new Scene(root, 600, 450);
+            primaryStage.setScene(scene);
+
+            primaryStage.show();
     }
 }
