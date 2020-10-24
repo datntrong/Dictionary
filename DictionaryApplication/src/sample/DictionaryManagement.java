@@ -7,6 +7,8 @@ import java.util.Map;
 public class DictionaryManagement {
     private GetDataWord getData = new GetDataWord();
 
+    private List<String> history = new ArrayList<String>();
+
     private Map<String, Word> data = getData.getData();
 
     public List<String> dictionarySearcher(String t) {
@@ -28,5 +30,13 @@ public class DictionaryManagement {
     }
     public Map<String, Word> getData() {
         return data;
+    }
+
+    public List<String> getHistory(){
+        return history;
+    }
+
+    public void setDataHistory(String n) {
+        history.add(n);
     }
 }

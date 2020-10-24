@@ -95,7 +95,9 @@ public class Controller implements Initializable {
         //String a = inputWord.getText();
 
         //System.out.println(a);
-        if (word == null) ;
+        if (word == null) {
+
+        }
         else {
             this.listView.getItems().removeAll(dictionaryManagement.getData().keySet());
             List<String> listWordSearch = dictionaryManagement.dictionarySearcher(t);
@@ -108,6 +110,7 @@ public class Controller implements Initializable {
 
     public void getWordSearch(ActionEvent actionEvent) {
         this.word = this.inputWord.getText();
+        dictionaryManagement.setDataHistory(word);
         System.out.println(word);
         dictionarySearcher();
     }
@@ -155,5 +158,14 @@ public class Controller implements Initializable {
             primaryStage.setScene(scene);
 
             primaryStage.show();
+    }
+
+    public void showHistory(){
+        if(dictionaryManagement.getHistory()==null);
+        else {
+            this.listView.getItems().removeAll(dictionaryManagement.getData().keySet());
+            this.listView.getItems().addAll(dictionaryManagement.getHistory());
+            this.listView.refresh();
+        }
     }
 }
