@@ -43,9 +43,11 @@ public class GetDataWord {
 
     }
     public Map<String, Word> getData() {
+
+//        dataSort.put("UET",new Word("UET","Vnu"));
         readData();
+//
+//        if(dataSort.containsKey("UET")) System.out.println("YES");
         return dataSort;
     }
-
-
 }

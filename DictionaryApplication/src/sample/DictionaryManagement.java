@@ -9,9 +9,12 @@ public class DictionaryManagement {
 
     private List<String> history = new ArrayList<String>();
 
-    private static Map<String, Word> data = getData.getData();
+    private List<String> favourite = new ArrayList<String>();
+
+    private static Map<String,Word> data =  getData.getData();
 
     public List<String> dictionarySearcher(String t) {
+
         List<String> dictionary = new ArrayList<String>();
         List<String> listWordSearch = new ArrayList<String>();
         dictionary.addAll(data.keySet());
@@ -21,6 +24,7 @@ public class DictionaryManagement {
             if (word.toUpperCase().startsWith(t.toUpperCase()))
                 listWordSearch.add(word);
         }
+
         return listWordSearch;
     }
 
@@ -31,7 +35,7 @@ public class DictionaryManagement {
         if (data.containsKey(word_target)) {
             data.replace(word_target, new Word(word_target, word_explain));
         } else {
-//          System.out.println(word_explain);
+
             data.put(word_target, new Word(word_target, word_explain));
         }
     }
@@ -39,7 +43,6 @@ public class DictionaryManagement {
     public void deleteWord(String deleteWord) {
         data.remove(deleteWord);
     }
-
     public Map<String, Word> getData() {
         return data;
     }
@@ -50,5 +53,13 @@ public class DictionaryManagement {
 
     public void setDataHistory(String n) {
         history.add(n);
+    }
+
+    public void addFavourite(String favourite) {
+        this.favourite.add(favourite);
+    }
+
+    public List<String> getFavourite() {
+        return favourite;
     }
 }
