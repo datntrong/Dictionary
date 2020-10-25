@@ -20,14 +20,14 @@
             <VBox prefHeight="494.0" prefWidth="320.0">
                <children>
                   <TextField fx:id="inputWord" onAction="#getWordSearch" />
-                  <ListView fx:id="listView" prefHeight="466.0" prefWidth="320.0" style="-fx-background-color: #467;" />
+                  <ListView fx:id="listView" prefHeight="473.0" prefWidth="320.0" style="-fx-background-color: #467;" />
                </children>
             </VBox>
             <WebView fx:id="webViewWord" prefHeight="494.0" prefWidth="480.0" />
          </children>
       </HBox>
       <Icon content="VOLUME_UP" layoutX="713.0" layoutY="47.0" onMouseClicked="#textToSpeech" />
-      <MenuBar layoutX="-6.0" layoutY="75.0" prefHeight="30.0" prefWidth="419.0">
+      <MenuBar layoutY="73.0" prefHeight="30.0" prefWidth="390.0">
         <menus>
           <Menu mnemonicParsing="false">
                <graphic>
@@ -40,8 +40,18 @@
                         </MenuItem>
                       <MenuItem mnemonicParsing="false" onAction="#showHistory">
                            <graphic>
-                              <Button mnemonicParsing="false" text="History" />
+                              <Button mnemonicParsing="false" onAction="#showHistory" text="History" />
                            </graphic></MenuItem>
+                        <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <Button mnemonicParsing="false" onAction="#favourite" text="Favourite" />
+                           </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <Button mnemonicParsing="false" onAction="#showFavourite" text="ShowFavourite" />
+                           </graphic>
+                        </MenuItem>
                     </items>
                   </MenuButton>
                </graphic>
@@ -49,6 +59,7 @@
           <Menu mnemonicParsing="false">
             <items>
               <MenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="About" />
             </items>
                <graphic>
                   <MenuButton mnemonicParsing="false" prefHeight="28.0" prefWidth="147.0" text="Edit">
@@ -58,7 +69,10 @@
                               <Button fx:id="add" mnemonicParsing="false" onAction="#showAddWord" text="AddWord" />
                            </graphic>
                         </MenuItem>
-                      <MenuItem mnemonicParsing="false" />
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <Button mnemonicParsing="false" onAction="#deleteWord" text="Delete" />
+                           </graphic></MenuItem>
                     </items>
                   </MenuButton>
                </graphic>
@@ -71,5 +85,6 @@
         </menus>
       </MenuBar>
       <Button fx:id="btn" layoutX="568.0" layoutY="45.0" mnemonicParsing="false" onAction="#textToSpeech" prefHeight="30.0" prefWidth="103.0" text="Speech" />
+      <Icon content="HELP_OUTLINE" layoutX="713.0" layoutY="14.0" onMouseClicked="#showHistory" />
    </children>
 </AnchorPane>

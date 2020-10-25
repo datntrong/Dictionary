@@ -25,7 +25,7 @@ public class Controller implements Initializable {
     private TextField inputWord;
 
     @FXML
-    private ListView<String> listView;
+    private static volatile ListView<String> listView;
 
     @FXML
     private Button btn = new Button();
@@ -52,6 +52,16 @@ public class Controller implements Initializable {
     TextField addWord_t;
     @FXML
     TextField addWord_e;
+
+    @FXML
+    private TextField wordDelete;
+
+    @FXML
+    private Button showDelete = new Button();
+
+    @FXML
+    private Button delete = new Button();
+
 
     private DictionaryManagement dictionaryManagement = new DictionaryManagement();
 
@@ -82,6 +92,14 @@ public class Controller implements Initializable {
         this.listView.getItems().addAll(dictionaryManagement.getData().keySet());
     }
 
+    public void updateListView(String t) {
+        listView.getItems().removeAll(dictionaryManagement.getData().keySet());
+        List<String> listWordSearch = dictionaryManagement.dictionarySearcher(t);
+        listView.getItems().addAll(listWordSearch);
+        listView.refresh();
+    }
+
+
     public void setInputWord(TextField inputWord) {
         this.inputWord = inputWord;
     }
@@ -99,11 +117,7 @@ public class Controller implements Initializable {
 
         }
         else {
-            this.listView.getItems().removeAll(dictionaryManagement.getData().keySet());
-            List<String> listWordSearch = dictionaryManagement.dictionarySearcher(t);
-
-            this.listView.getItems().addAll(listWordSearch);
-            this.listView.refresh();
+           updateListView(word);
         }
 
     }
@@ -118,6 +132,9 @@ public class Controller implements Initializable {
     public void textToSpeech(ActionEvent e) {
         String text = listView.getSelectionModel().getSelectedItem();
         TextToSpeech.speak(text, false);
+        if (text != null) {
+            TextToSpeech.speak(text, false);
+        }
     }
 
     public void translateWindow(ActionEvent event) throws IOException {
@@ -144,7 +161,6 @@ public class Controller implements Initializable {
     public void addWord(ActionEvent e){
         dictionaryManagement.addWord(addWord_t.getText(),addWord_e.getText());
         System.out.println(addWord_t.getText());
-        
 
     }
 
@@ -168,4 +184,39 @@ public class Controller implements Initializable {
             this.listView.refresh();
         }
     }
+
+    public void editWord(){
+        String text = listView.getSelectionModel().getSelectedItem();
+
+
+    }
+
+    public void favourite(ActionEvent e){
+        String word =listView.getSelectionModel().getSelectedItem();
+        if(word!=null){
+            dictionaryManagement.addFavourite(word);
+        }
+
+
+    }
+
+    public void showFavourite(){
+        if(dictionaryManagement.getFavourite()!=null){
+            this.listView.getItems().removeAll(dictionaryManagement.getData().keySet());
+            this.listView.getItems().addAll(dictionaryManagement.getFavourite());
+            this.listView.refresh();
+        }
+    }
+    public void deleteWord(ActionEvent e){
+
+        String word =listView.getSelectionModel().getSelectedItem();
+        if(word!=null){
+            dictionaryManagement.deleteWord(word);
+            this.listView.getItems().remove(word);
+        }
+
+    }
+
+
+
 }

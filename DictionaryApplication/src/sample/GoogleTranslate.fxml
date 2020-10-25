@@ -18,7 +18,7 @@
                 <Font size="20.0" />
             </font>
         </TextArea>
-        <Text fill="#3b78e7" layoutX="104.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiếng Anh">
+        <Text fill="#2f89e7" layoutX="104.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiếng Anh">
             <font>
                 <Font size="20.0" />
             </font>
