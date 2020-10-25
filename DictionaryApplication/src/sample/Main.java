@@ -23,8 +23,8 @@ public class Main extends Application {
         primaryStage.show();
 
         controller.initComponents(scene);
-        controller.loadListView();
-        controller.initComponents(scene);
+//        controller.loadListView();
+//        controller.initComponents(scene);
 
     }
 
@@ -34,7 +34,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        launch();
     }
 
 

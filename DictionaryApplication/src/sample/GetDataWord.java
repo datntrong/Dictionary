@@ -19,6 +19,7 @@ public class GetDataWord {
 
     GetDataWord(){
     }
+
     public void readData() {
         try{
             FileReader fis = new FileReader(DATA_FILE_PATH);

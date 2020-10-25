@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 public class DictionaryManagement {
-    private GetDataWord getData = new GetDataWord();
+    private static GetDataWord getData = new GetDataWord();
 
     private List<String> history = new ArrayList<String>();
 
-    private Map<String, Word> data = getData.getData();
+    private static Map<String, Word> data = getData.getData();
 
     public List<String> dictionarySearcher(String t) {
         List<String> dictionary = new ArrayList<String>();
@@ -21,13 +21,25 @@ public class DictionaryManagement {
             if (word.toUpperCase().startsWith(t.toUpperCase()))
                 listWordSearch.add(word);
         }
-
         return listWordSearch;
     }
 
-    public void addWord(String word_target, String word_explain){
-        data.put(word_target,new Word(word_target,word_explain));
+    public void addWord(String word_target, String word_explain) {
+        word_explain = "<html><i>" + word_target
+                + "</i><br/><ul><li><font color='#cc0000'><b>"
+                + word_explain + "</b></font></li></ul></html>";
+        if (data.containsKey(word_target)) {
+            data.replace(word_target, new Word(word_target, word_explain));
+        } else {
+//          System.out.println(word_explain);
+            data.put(word_target, new Word(word_target, word_explain));
+        }
     }
+
+    public void deleteWord(String deleteWord) {
+        data.remove(deleteWord);
+    }
+
     public Map<String, Word> getData() {
         return data;
     }
