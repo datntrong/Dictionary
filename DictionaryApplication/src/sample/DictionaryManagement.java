@@ -19,12 +19,8 @@ public class DictionaryManagement {
 
     public List<String> dictionarySearcher(String t) {
 
-        List<String> dictionary = new ArrayList<String>();
         List<String> listWordSearch = new ArrayList<String>();
-        dictionary.addAll(data.keySet());
-        int sz = dictionary.size();
-        for (int i = 0, no = 0; i < sz; ++i) {
-            String word = dictionary.get(i);
+        for (String word : data.keySet()) {
             if (word.toUpperCase().startsWith(t.toUpperCase()))
                 listWordSearch.add(word);
         }
