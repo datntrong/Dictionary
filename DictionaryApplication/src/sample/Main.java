@@ -24,7 +24,6 @@ public class Main extends Application {
 
         controller.initComponents(scene);
         controller.loadListView();
-        controller.initComponents(scene);
 
     }
 

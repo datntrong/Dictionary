@@ -41,8 +41,7 @@ public class TextToSpeech {
             if (stop) {
                 synthesizer.deallocate();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

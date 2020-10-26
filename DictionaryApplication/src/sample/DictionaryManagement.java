@@ -7,11 +7,15 @@ import java.util.Map;
 public class DictionaryManagement {
     private static GetDataWord getData = new GetDataWord();
 
-    private List<String> history = new ArrayList<String>();
+    private static List<String> history = new ArrayList<String>();
 
-    private List<String> favourite = new ArrayList<String>();
+    private static List<String> favourite = new ArrayList<String>();
 
-    private static Map<String,Word> data =  getData.getData();
+    private static Map<String, Word> dataEV = getData.getDataEV();
+
+    private static Map<String, Word> dataVE = getData.getDataVE();
+
+    private static Map<String, Word> data = dataEV;
 
     public List<String> dictionarySearcher(String t) {
 
@@ -43,11 +47,12 @@ public class DictionaryManagement {
     public void deleteWord(String deleteWord) {
         data.remove(deleteWord);
     }
+
     public Map<String, Word> getData() {
         return data;
     }
 
-    public List<String> getHistory(){
+    public List<String> getHistory() {
         return history;
     }
 
@@ -61,5 +66,13 @@ public class DictionaryManagement {
 
     public List<String> getFavourite() {
         return favourite;
+    }
+
+    public void VE() {
+        data = dataVE;
+    }
+
+    public void EV() {
+        data = dataEV;
     }
 }
