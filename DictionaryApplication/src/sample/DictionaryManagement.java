@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 public class DictionaryManagement {
-    private static GetDataWord getData = new GetDataWord();
+    private static final GetDataWord getData = new GetDataWord();
 
-    private List<String> history = new ArrayList<String>();
+    private static final List<String> history = new ArrayList<String>();
 
-    private List<String> favourite = new ArrayList<String>();
+    private static final List<String> favourite = new ArrayList<String>();
 
-    private static Map<String,Word> data =  getData.getData();
+    private static final Map<String,Word> data =  getData.getData();
 
     public List<String> dictionarySearcher(String t) {
 
