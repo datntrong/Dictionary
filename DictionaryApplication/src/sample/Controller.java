@@ -50,6 +50,7 @@ public class Controller implements Initializable {
 
     @FXML
     private TextField addWord_t;
+
     @FXML
     private TextField addWord_e;
 
@@ -62,6 +63,8 @@ public class Controller implements Initializable {
     @FXML
     private Button delete = new Button();
 
+    @FXML
+    private Button speech = new Button();
 
     private DictionaryManagement dictionaryManagement = new DictionaryManagement();
 
@@ -80,20 +83,20 @@ public class Controller implements Initializable {
         this.webViewWord = (WebView) scene.lookup("#webViewWord");
         listView = (ListView<String>) scene.lookup("#listView");
         listView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    System.out.println(observable + " " + oldValue + " " + newValue);
-                    if (observable != null && newValue != null) {
-                        System.out.println(listView);
-                        Word selectedWord = dictionaryManagement.getData().get(newValue.trim());
-                        String definition = selectedWord.getWord_explain();
-                        this.webViewWord.getEngine().loadContent(definition, "text/html");
-                    }
+            (observable, oldValue, newValue) -> {
+                System.out.println(observable + " " + oldValue + " " + newValue);
+                if (observable != null && newValue != null) {
+                    System.out.println(listView);
+                    Word selectedWord = dictionaryManagement.getData().get(newValue.trim());
+                    String definition = selectedWord.getWord_explain();
+                    this.webViewWord.getEngine().loadContent(definition, "text/html");
                 }
+            }
         );
     }
 
     public void loadListView() {
-        this.listView.getItems().addAll(dictionaryManagement.getData().keySet());
+        listView.getItems().addAll(dictionaryManagement.getData().keySet());
     }
 
     public void updateListView(String t) {
@@ -120,7 +123,6 @@ public class Controller implements Initializable {
         if (word != null) {
             updateListView(word);
         }
-
     }
 
     public void getWordSearch(ActionEvent actionEvent) {
@@ -160,10 +162,17 @@ public class Controller implements Initializable {
         explain.appendText(Vietnamese);
     }
 
+    public void speechVN(ActionEvent e) {
+        String text = target.getText();
+//        TextToSpeech.speak(text, false);
+        if (text != null) {
+            TextToSpeech.speak(text, false);
+        }
+    }
+
     public void addWord(ActionEvent e) {
         dictionaryManagement.addWord(addWord_t.getText(), addWord_e.getText());
         System.out.println(addWord_t.getText());
-
     }
 
     public void showAddWord(ActionEvent e) throws IOException {
@@ -179,18 +188,11 @@ public class Controller implements Initializable {
     }
 
     public void showHistory() {
-        if (dictionaryManagement.getHistory() == null) ;
-        else {
-            this.listView.getItems().clear();
-            this.listView.getItems().addAll(dictionaryManagement.getHistory());
-            this.listView.refresh();
+        if (dictionaryManagement.getHistory() != null) {
+            listView.getItems().clear();
+            listView.getItems().addAll(dictionaryManagement.getHistory());
+            listView.refresh();
         }
-    }
-
-    public void editWord() {
-        String text = listView.getSelectionModel().getSelectedItem();
-
-
     }
 
     public void favourite(ActionEvent e) {
@@ -198,8 +200,6 @@ public class Controller implements Initializable {
         if (word != null) {
             dictionaryManagement.addFavourite(word);
         }
-
-
     }
 
     public void showFavourite() {
@@ -211,28 +211,26 @@ public class Controller implements Initializable {
     }
 
     public void deleteWord(ActionEvent e) {
-
         String word = listView.getSelectionModel().getSelectedItem();
         if (word != null) {
             dictionaryManagement.deleteWord(word);
-            this.listView.getItems().remove(word);
+            listView.getItems().remove(word);
         }
 
     }
 
     public void VE() {
-
-        this.listView.getItems().clear();
+        listView.getItems().clear();
         dictionaryManagement.VE();
-        this.listView.getItems().addAll(dictionaryManagement.getData().keySet());
-        this.listView.refresh();
+        listView.getItems().addAll(dictionaryManagement.getData().keySet());
+        listView.refresh();
 
     }
 
     public void EV() {
-        this.listView.getItems().clear();
+        listView.getItems().clear();
         dictionaryManagement.EV();
-        this.listView.getItems().addAll(dictionaryManagement.getData().keySet());
-        this.listView.refresh();
+        listView.getItems().addAll(dictionaryManagement.getData().keySet());
+        listView.refresh();
     }
 }

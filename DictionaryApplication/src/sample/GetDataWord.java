@@ -13,15 +13,11 @@ public class GetDataWord {
     private static final String DATA_FILE_PATH_VE = "V_E.txt";
     private static final String SPLITTING_CHARACTERS = "<html>";
 
-    private TreeMap<String, Word> dataSortEV = new TreeMap<String, Word>();
-    private TreeMap<String, Word> dataSortVE = new TreeMap<String, Word>();
+    GetDataWord() {}
 
-    GetDataWord() {
-    }
-
-    public void readData(String DATA_FILE_PATH_VE,TreeMap<String, Word> dataSort) {
+    public TreeMap<String, Word> readData(String DATA_FILE_PATH_VE) {
+        TreeMap<String, Word> dataSort = new TreeMap<>();
         try {
-
             FileReader fis = new FileReader(DATA_FILE_PATH_VE);
             BufferedReader br = new BufferedReader(fis);
             String line;
@@ -38,15 +34,14 @@ public class GetDataWord {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return dataSort;
     }
 
     public Map<String, Word> getDataEV() {
-        readData(DATA_FILE_PATH,dataSortEV);
-        return dataSortEV;
+        return readData(DATA_FILE_PATH);
     }
 
     public Map<String, Word> getDataVE() {
-        readData(DATA_FILE_PATH_VE,dataSortVE);
-        return dataSortVE;
+        return readData(DATA_FILE_PATH_VE);
     }
 }
