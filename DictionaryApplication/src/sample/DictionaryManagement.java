@@ -35,6 +35,7 @@ public class DictionaryManagement {
         if (data.containsKey(word_target)) {
             data.replace(word_target, new Word(word_target, word_explain));
         } else {
+
             data.put(word_target, new Word(word_target, word_explain));
         }
     }

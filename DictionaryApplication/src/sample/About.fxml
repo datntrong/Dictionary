@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="170.0" layoutX="1.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/Users/nguyentrongdat/IdeaProjects/DictionaryGUI/DHCN.png" />
+         </image></ImageView>
+      <Text layoutX="256.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary" wrappingWidth="133.9830722808838" />
+      <Hyperlink layoutX="256.0" layoutY="124.0" onAction="#openLinkDat" prefHeight="26.0" prefWidth="134.0" text="Nguyen Trong Dat" />
+      <Hyperlink layoutX="256.0" layoutY="168.0" onAction="#openLinkHai" prefHeight="26.0" prefWidth="113.0" text="Hai Nguyen" />
+   </children>
+</AnchorPane>

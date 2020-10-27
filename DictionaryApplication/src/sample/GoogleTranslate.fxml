@@ -29,6 +29,6 @@
             </font>
         </Text>
         <Button fx:id="translate" layoutX="276.0" layoutY="1.0" mnemonicParsing="false" onAction="#translate" text="Dịch" />
-      <Button fx:id="speech" layoutX="518.0" layoutY="1.0" mnemonicParsing="false" onAction="#speechVN" text="Đọc" />
+        <Button fx:id="speech" layoutX="518.0" layoutY="1.0" mnemonicParsing="false" onAction="#speechVN" text="Đọc" />
     </children>
 </AnchorPane>

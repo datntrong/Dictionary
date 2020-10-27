@@ -1,5 +1,6 @@
 package sample;
 
+import com.sun.prism.Image;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,7 +51,6 @@ public class Controller implements Initializable {
 
     @FXML
     private TextField addWord_t;
-
     @FXML
     private TextField addWord_e;
 
@@ -64,9 +64,12 @@ public class Controller implements Initializable {
     private Button delete = new Button();
 
     @FXML
-    private Button speech = new Button();
+    private Image image;
+
 
     private DictionaryManagement dictionaryManagement = new DictionaryManagement();
+
+    private String word;
 
     public Controller() {
 
@@ -82,15 +85,15 @@ public class Controller implements Initializable {
         listView = (ListView<String>) scene.lookup("#listView");
         inputWord = (TextField) scene.lookup("#inputWord");
         listView.getSelectionModel().selectedItemProperty().addListener(
-            (observable, oldValue, newValue) -> {
-//                System.out.println(observable + " " + oldValue + " " + newValue);
-                if (observable != null && newValue != null) {
-//                    System.out.println(listView);
-                    Word selectedWord = dictionaryManagement.getData().get(newValue.trim());
-                    String definition = selectedWord.getWord_explain();
-                    this.webViewWord.getEngine().loadContent(definition, "text/html");
+                (observable, oldValue, newValue) -> {
+//                    System.out.println(observable + " " + oldValue + " " + newValue);
+                    if (observable != null && newValue != null) {
+//                        System.out.println(listView);
+                        Word selectedWord = dictionaryManagement.getData().get(newValue.trim());
+                        String definition = selectedWord.getWord_explain();
+                        this.webViewWord.getEngine().loadContent(definition, "text/html");
+                    }
                 }
-            }
         );
         inputWord.textProperty().addListener((observable, oldValue, newValue) -> {
 //          System.out.println("textfield changed from " + oldValue + " to " + newValue);
@@ -102,7 +105,7 @@ public class Controller implements Initializable {
     }
 
     public void loadListView() {
-        listView.getItems().addAll(dictionaryManagement.getData().keySet());
+        this.listView.getItems().addAll(dictionaryManagement.getData().keySet());
     }
 
     public void updateListView(String t) {
@@ -122,12 +125,24 @@ public class Controller implements Initializable {
     }
 
     public void dictionarySearcher(String word) {
+
+        //String a = inputWord.getText();
+
+        //System.out.println(a);
         if (word != null) {
             updateListView(word);
         }
+
     }
 
-    public void textToSpeech(ActionEvent e) {
+//    public void getWordSearch(ActionEvent actionEvent) {
+//        this.word = this.inputWord.getText();
+//        dictionaryManagement.setDataHistory(word);
+//        System.out.println(word);
+//        dictionarySearcher();
+//    }
+
+    public void textToSpeech() {
         String text = listView.getSelectionModel().getSelectedItem();
 //        TextToSpeech.speak(text, false);
         if (text != null) {
@@ -157,17 +172,10 @@ public class Controller implements Initializable {
         explain.appendText(Vietnamese);
     }
 
-    public void speechVN(ActionEvent e) {
-        String text = target.getText();
-//        TextToSpeech.speak(text, false);
-        if (text != null) {
-            TextToSpeech.speak(text, false);
-        }
-    }
-
     public void addWord(ActionEvent e) {
         dictionaryManagement.addWord(addWord_t.getText(), addWord_e.getText());
-//        System.out.println(addWord_t.getText());
+        System.out.println(addWord_t.getText());
+
     }
 
     public void showAddWord(ActionEvent e) throws IOException {
@@ -182,11 +190,18 @@ public class Controller implements Initializable {
         primaryStage.show();
     }
 
+    public void speechVN(ActionEvent e) {
+        String text = target.getText();
+        if (text != null) {
+            TextToSpeech.speak(text, false);
+        }
+    }
+
     public void showHistory() {
         if (dictionaryManagement.getHistory() != null) {
-            listView.getItems().clear();
-            listView.getItems().addAll(dictionaryManagement.getHistory());
-            listView.refresh();
+            this.listView.getItems().clear();
+            this.listView.getItems().addAll(dictionaryManagement.getHistory());
+            this.listView.refresh();
         }
     }
 
@@ -209,23 +224,54 @@ public class Controller implements Initializable {
         String word = listView.getSelectionModel().getSelectedItem();
         if (word != null) {
             dictionaryManagement.deleteWord(word);
-            listView.getItems().remove(word);
+            this.listView.getItems().remove(word);
         }
-
     }
 
     public void VE() {
-        listView.getItems().clear();
+        this.listView.getItems().clear();
         dictionaryManagement.VE();
-        listView.getItems().addAll(dictionaryManagement.getData().keySet());
-        listView.refresh();
-
+        this.listView.getItems().addAll(dictionaryManagement.getData().keySet());
+        this.listView.refresh();
     }
 
     public void EV() {
-        listView.getItems().clear();
+        this.listView.getItems().clear();
         dictionaryManagement.EV();
-        listView.getItems().addAll(dictionaryManagement.getData().keySet());
-        listView.refresh();
+        this.listView.getItems().addAll(dictionaryManagement.getData().keySet());
+        this.listView.refresh();
+    }
+
+    public void showAbout(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("About.fxml"));
+
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("About me");
+
+        Scene scene = new Scene(root, 600, 450);
+        primaryStage.setScene(scene);
+
+        primaryStage.show();
+
+    }
+
+    public void openLinkHai() {
+        String url = "https://github.com/haihy2001";
+        Runtime rt = Runtime.getRuntime();
+        try {
+            rt.exec("open " + url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openLinkDat() {
+        String url = "https://github.com/datntrong";
+        Runtime rt = Runtime.getRuntime();
+        try {
+            rt.exec("open " + url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
