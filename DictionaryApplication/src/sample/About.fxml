@@ -12,8 +12,10 @@
          <image>
             <Image url="file:/Users/nguyentrongdat/IdeaProjects/DictionaryGUI/DHCN.png" />
          </image></ImageView>
-      <Text layoutX="256.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary" wrappingWidth="133.9830722808838" />
-      <Hyperlink layoutX="256.0" layoutY="124.0" onAction="#openLinkDat" prefHeight="26.0" prefWidth="134.0" text="Nguyen Trong Dat" />
-      <Hyperlink layoutX="256.0" layoutY="168.0" onAction="#openLinkHai" prefHeight="26.0" prefWidth="113.0" text="Hai Nguyen" />
+      <Text layoutX="222.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary version 1.0" textAlignment="CENTER" wrappingWidth="133.9830722808838" />
+      <Hyperlink layoutX="256.0" layoutY="256.0" onAction="#openLinkDat" prefHeight="26.0" prefWidth="134.0" text="Nguyen Trong Dat" />
+      <Hyperlink layoutX="256.0" layoutY="282.0" onAction="#openLinkHai" prefHeight="26.0" prefWidth="113.0" text="Hai Nguyen" />
+      <Text layoutX="260.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Developed by" />
+      <Text layoutX="216.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thank for using our dictionary." />
    </children>
 </AnchorPane>

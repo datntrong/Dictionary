@@ -1,6 +1,7 @@
 package sample;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,11 +10,13 @@ public class DictionaryManagement {
 
     private static List<String> history = new ArrayList<String>();
 
-    private static List<String> favourite = new ArrayList<String>();
+    private static List<String> favourite = getData.getFavorite();
 
     private static Map<String, Word> dataEV = getData.getDataEV();
 
     private static Map<String, Word> dataVE = getData.getDataVE();
+
+    private static Map<String, Word> add = new HashMap<>();
 
     private static Map<String, Word> data = dataEV;
 
@@ -35,7 +38,7 @@ public class DictionaryManagement {
         if (data.containsKey(word_target)) {
             data.replace(word_target, new Word(word_target, word_explain));
         } else {
-
+            add.put(word_target, new Word(word_target, word_explain));
             data.put(word_target, new Word(word_target, word_explain));
         }
     }
@@ -53,22 +56,34 @@ public class DictionaryManagement {
     }
 
     public void addHistory(String n) {
-        history.add(n);
+        if(!history.contains(n)){
+            history.add(n);
+        }
+
     }
 
     public void addFavourite(String favourite) {
-        this.favourite.add(favourite);
+        if(favourite.contains(favourite)) {
+            this.favourite.add(favourite);
+        }
     }
 
     public List<String> getFavourite() {
+
         return favourite;
     }
 
     public void VE() {
+        data.putAll(getData.getData());
         data = dataVE;
     }
 
     public void EV() {
+        data.putAll(getData.getData());
         data = dataEV;
     }
+    public Map<String, Word> getAdd() {
+        return add;
+    }
+
 }

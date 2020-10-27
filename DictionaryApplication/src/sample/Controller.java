@@ -35,9 +35,6 @@ public class Controller implements Initializable {
     private WebView webViewWord = new WebView();
 
     @FXML
-    private Button add = new Button();
-
-    @FXML
     private Button translateWindow = new Button();
 
     @FXML
@@ -216,6 +213,7 @@ public class Controller implements Initializable {
 
     public void showFavourite() {
         if (dictionaryManagement.getFavourite() != null) {
+
             listView.getItems().clear();
             listView.getItems().addAll(dictionaryManagement.getFavourite());
             listView.refresh();
@@ -279,6 +277,7 @@ public class Controller implements Initializable {
     }
 
     public void save(){
-        write.write("Favourite.txt",dictionaryManagement.getFavourite());
+        write.write("Favourite.txt", dictionaryManagement.getFavourite());
+        write.writeData("E_V_new.txt", dictionaryManagement.getAdd());
     }
 }
