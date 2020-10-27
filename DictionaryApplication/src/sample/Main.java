@@ -11,7 +11,6 @@ import java.io.IOException;
 public class Main extends Application {
     private Controller controller = new Controller();
 
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -21,10 +20,8 @@ public class Main extends Application {
         primaryStage.setScene(scene);
 
         primaryStage.show();
-
         controller.initComponents(scene);
         controller.loadListView();
-
     }
 
     @Override

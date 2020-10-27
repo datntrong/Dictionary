@@ -68,8 +68,6 @@ public class Controller implements Initializable {
 
     private DictionaryManagement dictionaryManagement = new DictionaryManagement();
 
-    private String word;
-
     public Controller() {
 
     }
@@ -82,17 +80,25 @@ public class Controller implements Initializable {
     public void initComponents(Scene scene) {
         this.webViewWord = (WebView) scene.lookup("#webViewWord");
         listView = (ListView<String>) scene.lookup("#listView");
+        inputWord = (TextField) scene.lookup("#inputWord");
         listView.getSelectionModel().selectedItemProperty().addListener(
             (observable, oldValue, newValue) -> {
-                System.out.println(observable + " " + oldValue + " " + newValue);
+//                System.out.println(observable + " " + oldValue + " " + newValue);
                 if (observable != null && newValue != null) {
-                    System.out.println(listView);
+//                    System.out.println(listView);
                     Word selectedWord = dictionaryManagement.getData().get(newValue.trim());
                     String definition = selectedWord.getWord_explain();
                     this.webViewWord.getEngine().loadContent(definition, "text/html");
                 }
             }
         );
+        inputWord.textProperty().addListener((observable, oldValue, newValue) -> {
+//          System.out.println("textfield changed from " + oldValue + " to " + newValue);
+//          word = newValue;
+//          dictionaryManagement.setDataHistory(word);
+//          System.out.println(word);
+            dictionarySearcher(newValue);
+        });
     }
 
     public void loadListView() {
@@ -115,21 +121,10 @@ public class Controller implements Initializable {
         return inputWord.getText();
     }
 
-    public void dictionarySearcher() {
-        String t = word;
-        //String a = inputWord.getText();
-
-        //System.out.println(a);
+    public void dictionarySearcher(String word) {
         if (word != null) {
             updateListView(word);
         }
-    }
-
-    public void getWordSearch(ActionEvent actionEvent) {
-        this.word = this.inputWord.getText();
-        dictionaryManagement.setDataHistory(word);
-        System.out.println(word);
-        dictionarySearcher();
     }
 
     public void textToSpeech(ActionEvent e) {
@@ -172,7 +167,7 @@ public class Controller implements Initializable {
 
     public void addWord(ActionEvent e) {
         dictionaryManagement.addWord(addWord_t.getText(), addWord_e.getText());
-        System.out.println(addWord_t.getText());
+//        System.out.println(addWord_t.getText());
     }
 
     public void showAddWord(ActionEvent e) throws IOException {

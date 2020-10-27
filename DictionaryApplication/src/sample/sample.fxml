@@ -18,7 +18,7 @@
          <children>
             <VBox prefHeight="494.0" prefWidth="320.0">
                <children>
-                  <TextField fx:id="inputWord" onAction="#getWordSearch" />
+                  <TextField fx:id="inputWord"/>
                   <ListView fx:id="listView" prefHeight="473.0" prefWidth="320.0" style="-fx-background-color: #467;" />
                </children>
             </VBox>
