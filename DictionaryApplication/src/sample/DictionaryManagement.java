@@ -1,6 +1,7 @@
 package sample;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,8 @@ public class DictionaryManagement {
     private static Map<String, Word> dataEV = getData.getDataEV();
 
     private static Map<String, Word> dataVE = getData.getDataVE();
+
+    private static Map<String, Word> add = new HashMap<>();
 
     private static Map<String, Word> data = dataEV;
 
@@ -35,7 +38,7 @@ public class DictionaryManagement {
         if (data.containsKey(word_target)) {
             data.replace(word_target, new Word(word_target, word_explain));
         } else {
-
+            add.put(word_target, new Word(word_target, word_explain));
             data.put(word_target, new Word(word_target, word_explain));
         }
     }
@@ -46,6 +49,10 @@ public class DictionaryManagement {
 
     public Map<String, Word> getData() {
         return data;
+    }
+
+    public Map<String, Word> getAdd() {
+        return add;
     }
 
     public List<String> getHistory() {

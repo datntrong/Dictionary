@@ -45,6 +45,5 @@ public class GetDataWord {
     }
     public Map<String, Word> getDataVE() {
         return readData(DATA_FILE_PATH_VE);
-
     }
 }

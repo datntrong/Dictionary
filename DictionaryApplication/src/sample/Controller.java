@@ -71,6 +71,8 @@ public class Controller implements Initializable {
 
     private Write write = new Write();
 
+    private WriteData writeData = new WriteData();
+
     public Controller() {
 
     }
@@ -279,6 +281,7 @@ public class Controller implements Initializable {
     }
 
     public void save(){
-        write.write("Favourite.txt",dictionaryManagement.getFavourite());
+        write.write("Favourite.txt", dictionaryManagement.getFavourite());
+        writeData.writeData("E_V_new.txt", dictionaryManagement.getAdd());
     }
 }
