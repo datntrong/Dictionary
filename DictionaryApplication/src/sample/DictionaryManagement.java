@@ -51,10 +51,6 @@ public class DictionaryManagement {
         return data;
     }
 
-    public Map<String, Word> getAdd() {
-        return add;
-    }
-
     public List<String> getHistory() {
         return history;
     }
