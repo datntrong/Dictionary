@@ -69,7 +69,7 @@ public class Controller implements Initializable {
 
     private DictionaryManagement dictionaryManagement = new DictionaryManagement();
 
-    private String word;
+    private Write write = new Write();
 
     public Controller() {
 
@@ -86,11 +86,13 @@ public class Controller implements Initializable {
         inputWord = (TextField) scene.lookup("#inputWord");
         listView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
+
 //                    System.out.println(observable + " " + oldValue + " " + newValue);
                     if (observable != null && newValue != null) {
 //                        System.out.println(listView);
                         Word selectedWord = dictionaryManagement.getData().get(newValue.trim());
                         String definition = selectedWord.getWord_explain();
+                        dictionaryManagement.addHistory(newValue);
                         this.webViewWord.getEngine().loadContent(definition, "text/html");
                     }
                 }
@@ -190,7 +192,7 @@ public class Controller implements Initializable {
         primaryStage.show();
     }
 
-    public void speechVN(ActionEvent e) {
+    public void speechVN() {
         String text = target.getText();
         if (text != null) {
             TextToSpeech.speak(text, false);
@@ -205,7 +207,7 @@ public class Controller implements Initializable {
         }
     }
 
-    public void favourite(ActionEvent e) {
+    public void favourite() {
         String word = listView.getSelectionModel().getSelectedItem();
         if (word != null) {
             dictionaryManagement.addFavourite(word);
@@ -217,6 +219,7 @@ public class Controller implements Initializable {
             listView.getItems().clear();
             listView.getItems().addAll(dictionaryManagement.getFavourite());
             listView.refresh();
+
         }
     }
 
@@ -273,5 +276,9 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void save(){
+        write.write("Favourite.txt",dictionaryManagement.getFavourite());
     }
 }

@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -37,7 +39,7 @@ public class GetDataWord {
         }
         return dataSort;
     }
-
+    
     public Map<String, Word> getDataEV() {
         return readData(DATA_FILE_PATH);
     }

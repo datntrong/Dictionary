@@ -15,25 +15,25 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: rgba(11,87,177,0.27);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <HBox layoutY="106.0" prefHeight="494.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="106.0">
+      <HBox layoutY="63.0" prefHeight="494.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="63.0">
          <children>
-            <VBox prefHeight="494.0" prefWidth="320.0">
+            <VBox prefHeight="513.0" prefWidth="322.0">
                <children>
                   <TextField fx:id="inputWord" />
-                  <ListView fx:id="listView" prefHeight="473.0" prefWidth="320.0" style="-fx-background-color: #467;" />
+                  <ListView fx:id="listView" prefHeight="511.0" prefWidth="321.0" style="-fx-background-color: #467;" />
                </children>
             </VBox>
             <WebView fx:id="webViewWord" prefHeight="494.0" prefWidth="480.0" />
          </children>
       </HBox>
-      <MenuBar layoutY="56.0" prefHeight="30.0" prefWidth="320.0">
+      <MenuBar layoutY="-1.0" prefHeight="30.0" prefWidth="800.0">
         <menus>
           <Menu mnemonicParsing="false" text="Function">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#translateWindow" text="Translate" />
                   <MenuItem mnemonicParsing="false" onAction="#showHistory" text="History" />
-                  <MenuItem mnemonicParsing="false" onAction="#favourite" text="Favourite" />
                   <MenuItem mnemonicParsing="false" onAction="#showFavourite" text="ShowFavourite" />
+                  <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -49,11 +49,16 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button layoutX="320.0" layoutY="55.0" mnemonicParsing="false" onAction="#EV" text="E-V" />
-      <Button layoutX="362.0" layoutY="55.0" mnemonicParsing="false" onAction="#VE" text="V-E" />
-      <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="770.0" layoutY="74.0" onMouseClicked="#textToSpeech" pickOnBounds="true" preserveRatio="true">
+      <Button layoutX="7.0" layoutY="29.0" mnemonicParsing="false" onAction="#EV" text="English-Vietnamese" />
+      <Button layoutX="129.0" layoutY="29.0" mnemonicParsing="false" onAction="#VE" text="Vietnamese-English" />
+      <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="750.0" layoutY="74.0" onMouseClicked="#textToSpeech" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="file:/Users/nguyentrongdat/IdeaProjects/DictionaryGUI/Speaker_Icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="715.0" layoutY="74.0" onMouseClicked="#favourite" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/Users/nguyentrongdat/IdeaProjects/DictionaryGUI/Star.png" />
          </image>
       </ImageView>
    </children>

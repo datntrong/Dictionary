@@ -52,7 +52,7 @@ public class DictionaryManagement {
         return history;
     }
 
-    public void setDataHistory(String n) {
+    public void addHistory(String n) {
         history.add(n);
     }
 
